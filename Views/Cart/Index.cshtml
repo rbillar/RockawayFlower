@@ -1,0 +1,91 @@
+﻿@model List<RockawayFlower.Models.CartItem>
+@{
+    ViewData["Title"] = "Your Cart";
+    int Subtotal = Model.Sum(x => x.PriceCents * x.Qty);
+    string Money(int cents) => string.Format("${0:N2}", cents / 100.0);
+}
+
+<div class="container py-5">
+    <h1 class="mb-4">Your Cart</h1>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">Your cart is empty.</div>
+        <a class="btn btn-secondary" href="/Shop/Index">Continue Shopping</a>
+    }
+    else
+    {
+        <!-- SINGLE outer form for updates and removes -->
+        <form asp-action="Update" method="post" class="card shadow-sm">
+            @Html.AntiForgeryToken()
+            <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Item</th>
+                            <th class="text-end">Price</th>
+                            <th style="width:140px;">Qty</th>
+                            <th class="text-end">Total</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var it in Model)
+                        {
+                            var line = it.PriceCents * it.Qty;
+                            <tr>
+                                <td>@it.Name</td>
+                                <td class="text-end">@Money(it.PriceCents)</td>
+                                <td>
+                                    <input class="form-control" type="number"
+                                           name="qty[@it.Id]" value="@it.Qty" min="0" />
+                                </td>
+                                <td class="text-end">@Money(line)</td>
+                                <td class="text-end">
+                                    <!-- Remove submits to Cart/Remove using the same outer form -->
+                                    <button type="submit"
+                                            class="btn btn-sm btn-outline-danger"
+                                            formaction="@Url.Action("Remove","Cart")"
+                                            formmethod="post"
+                                            name="id" value="@it.Id">
+                                        Remove
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot class="table-light">
+                        <tr>
+                            <th colspan="3" class="text-end">Subtotal</th>
+                            <th class="text-end">@Money(Subtotal)</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <div class="d-flex justify-content-between p-3">
+                <a class="btn btn-secondary" href="/Shop/Index">Continue Shopping</a>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary" type="submit">Update Cart</button>
+                    <!-- a class="btn btn-success" href="/Cart/Checkout">Checkout</a -->
+                    <!-- Button that "opens a modal", then navigates -->
+                    
+                </div>
+            </div>
+        </form>
+
+<button class="btn btn-success" onclick="startCheckout()">Checkout</button>
+        <div id="overlay" style="display:none;position:fixed;inset:0;background:#0008;backdrop-filter:blur(2px);z-index:1050">
+            <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;padding:24px;border-radius:16px">
+                <h5>Taking you to secure payment…</h5>
+            </div>
+        </div>
+    }
+</div>
+<script>
+    function startCheckout(){
+    document.getElementById('overlay').style.display='block';
+    window.location.href = '/Cart/Checkout'; // your action that creates Session + redirects
+    }
+</script>

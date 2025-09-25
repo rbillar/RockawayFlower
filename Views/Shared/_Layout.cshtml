@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="@ViewBag.MetaDescription" />
+    <meta property="og:title" content="@ViewBag.Title" />
+    <meta property="og:description" content="@ViewBag.MetaDescription" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://rockawayflower.azurewebsites.net//" />
+    <meta property="og:image" content="https://rockawayflower.azurewebsites.net//images/IMG_4901.JPEG" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <title>@ViewData["Title"] - Rockaway Flower Shop</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/RockawayFlower.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .scroll-offset {
+            scroll-margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #7A36CC;">
+        
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="@Url.Action("Index", "Home")">
+                <img src="~/images/FlowerShop_Logo2.png" alt="Rockaway Florist" height="40">
+                Rockaway Flower Shop
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                    aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/home/gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#contact">Contact</a></li>
+                </ul>
+                
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-white text-center py-3" style="background-color: #7A36CC;">
+        <p class="mb-0">© @DateTime.Now.Year Rockaway Flower Shop • Ozone Park, NY</p>
+    </footer>
+
+
+
+    <!-- Scripts -->
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <link href="~/lib/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+    <script src="~/lib/lightbox2/2.11.4/js/lightbox.min.js"></script>
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+
+</body>
+</html>

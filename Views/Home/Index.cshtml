@@ -1,0 +1,223 @@
+﻿@{
+    ViewBag.Title = "Rockaway Flower Shop | Fresh Bouquets & Delivery in Ozone Park, NY";
+    ViewBag.MetaDescription = "Rockaway Flower Shop in Ozone Park, NY – fresh bouquets, wedding & event florals, and same-day local delivery. Call (347) 339-1695 or visit 90-01 Rockaway Blvd.";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Announcement Section -->
+<section id="announcement" class="bg-light py-4 border-bottom">
+    <div class="container text-center">
+        <h2 class="mb-3">🌸 Grand Opening Specials! 🌸</h2>
+        <p class="lead mb-3">
+            We’re excited to announce that we’ve just opened our doors and are celebrating with 
+            <strong>grand opening specials</strong> you won’t want to miss. Discover a wide variety of 
+            fresh, beautiful flowers at unbeatable prices—perfect for any occasion.
+        </p>
+        <p class="fw-semibold">
+            Stop by today and take advantage of these amazing deals while they last!
+        </p>
+        <p class="text-muted fst-italic mb-0">
+            With gratitude,<br />
+            The Rockaway Flower Shop Team
+        </p>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="container my-5">
+    <div class="row">
+        <div class="col-md-6 align-top">
+
+            <p>
+                We are conveniently located at <strong>90-01 Rockaway Boulevard, Ozone Park NY 11416</strong>, making it easy for residents of Ozone Park and neighboring communities to stop by. Our shop is just minutes away from major avenues and public transportation, so picking up flowers on the way to work, home, or a special event is always simple.
+            </p>
+            <p>
+                Call us at <a href="tel:13473391695">(347) 339-1695</a> or visit in person for the <strong>freshest flowers, custom bouquets, and attentive service</strong> that our customers love. Whether you need a last-minute arrangement, a thoughtful gift, or event florals designed to impress, our team is here to help.
+            </p>
+            <p>
+                We also offer <strong>same-day local delivery</strong> throughout Ozone Park, Howard Beach, South Ozone Park, and nearby neighborhoods—bringing beauty and joy right to your doorstep. Stop in today and let us create something special for you or your loved ones!
+            </p>
+
+            
+
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-4 text-end">
+            <img src="~/images/IMG_4903.JPEG" class="img-fluid rounded shadow" alt="Rockaway Flower Shop">
+        </div>
+    </div>
+</section>
+
+
+<!-- Services Section -->
+<section id="services" class="bg-white py-5">
+  <div class="container text-center">
+    <h2 class="mb-4">Our Services</h2>
+    <div class="row g-4">
+
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <img src="~/images/icon_FreshFlowers1.JPEG" alt="Fresh Flowers Icon" 
+                 class="mb-3 rounded" style="width:120px; height:auto;">
+            <h5 class="card-title">Freshest Flowers Daily</h5>
+            <p class="card-text">We provide the freshest flowers every day to brighten any occasion.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <img src="~/images/icon_CustomBouquets1.JPEG" alt="Custom Bouquets Icon" 
+                 class="mb-3 rounded" style="width:120px; height:auto;">
+            <h5 class="card-title">Custom Bouquets</h5>
+            <p class="card-text">Personalized arrangements tailored to your style and preferences.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <img src="~/images/icon_SeasonalBouquets.JPEG" alt="Seasonal Bouquets Icon" 
+                 class="mb-3 rounded" style="width:120px; height:auto;">
+            <h5 class="card-title">Seasonal Fresh Bouquets</h5>
+            <p class="card-text">Beautiful seasonal selections created from the finest flowers in bloom.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <img src="~/images/icon_WeddingArrangements.JPEG" alt="Wedding Arrangements Icon" 
+                 class="mb-3 rounded" style="width:120px; height:auto;">
+            <h5 class="card-title">Wedding Arrangements</h5>
+            <p class="card-text">Elegant floral designs to make your wedding day truly unforgettable.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <img src="~/images/icon_FuneralAndSympathy1.jpeg" alt="Funeral and Sympathy Flowers Icon" 
+                 class="mb-3 rounded" style="width:120px; height:auto;">
+            <h5 class="card-title">Funeral & Sympathy Flowers</h5>
+            <p class="card-text">Thoughtful and respectful arrangements to honor loved ones.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <div class="mb-3">
+              <i class="bi bi-truck text-success" style="font-size:64px;"></i>
+            </div>
+            <h5 class="card-title">Local Delivery</h5>
+            <p class="card-text">Convenient flower delivery throughout Ozone Park and nearby areas.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- Gallery Section -->
+<section id="gallery" class="bg-light py-5">
+    <div class="container">
+
+<section class="py-4 text-center bg-light border rounded mb-4 shadow-sm">
+    <div class="container">
+        <h2 class="fw-bold mb-2">Available Exclusively at Rockaway Flower Shop</h2>
+                <p class="lead mb-0">Please call (347) 339-1695 for availability</p>
+    </div>
+</section>
+        <div class="row g-4">
+
+            @* Loop through all images *@
+            @{
+                var galleryImages = new[]
+                {
+                        "2966293307432705832.JPEG",
+                        "3611142943485474511.JPEG",
+                        "8743826365610526321.JPEG",     
+                        "IMG_1224.JPEG",
+                        "IMG_1247.JPEG",
+                        "IMG_1273.JPEG",
+                        "IMG_1274.JPEG",
+                        "IMG_1300.JPEG",
+                        "IMG_1303.JPEG",
+                        "IMG_1311.JPEG",
+                        "IMG_1312.JPEG",
+                        "IMG_1313.JPEG",
+                        "IMG_1314.JPEG",
+                        "IMG_1316.JPEG",
+                        "IMG_4894.JPEG",
+                        "IMG_4913.JPEG",
+                        "IMG_4896.JPEG",
+                        "image000005.JPEG",
+                        "IMG_1320.JPEG",
+                        "IMG_1319.JPEG",
+                        "IMG_4897.JPEG",
+                        "IMG_4901.JPEG",
+                        };
+            }
+
+            @for (int i = 0; i < galleryImages.Length; i++)
+            {
+                <div class="col-6 col-md-4 col-lg-3">
+                    <a href="~/images/@galleryImages[i]" data-lightbox="flowers" data-title="@galleryImages[i]">
+                        <img src="~/images/@galleryImages[i]"
+                             class="img-fluid rounded shadow-sm hover-shadow"
+                             alt="@System.IO.Path.GetFileNameWithoutExtension(galleryImages[i])" />
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- Contact Section -->
+<section id="contact" class="container my-5">
+    <div class="row g-4">
+        <div class="col-md-6">
+            <h2>Visit or Contact Us</h2>
+            <address class="mb-2">
+                <a class="fw-semibold" target="_blank" rel="noopener" href="https://maps.google.com/?q=90-01+Rockaway+Boulevard+Ozone+Park+NY+11416">Rockaway Flower Shop</a>
+                <div>90-01 Rockaway Boulevard</div>
+                <div>Ozone Park, NY 11416</div>
+            </address>
+            <p class="mb-1">📞 <a href="tel:13473391695">(347) 339-1695</a></p>
+            <p class="mb-3">📧 <a href="mailto:rockawayflower@gmail.com">rockawayflower@gmail.com</a></p>
+            
+        </div>
+        <div class="col-md-6">
+            <h2>Hours</h2>
+            <ul class="list-unstyled small">
+                <li class="d-flex justify-content-between"><span>Monday</span><span>9:00 AM – 8:00 PM</span></li>
+                <li class="d-flex justify-content-between"><span>Tuesday</span><span>9:00 AM – 8:00 PM</span></li>
+                <li class="d-flex justify-content-between"><span>Wednesday</span><span>9:00 AM – 8:00 PM</span></li>
+                <li class="d-flex justify-content-between"><span>Thursday</span><span>9:00 AM – 8:00 PM</span></li>
+                <li class="d-flex justify-content-between"><span>Friday</span><span>9:00 AM – 8:00 PM</span></li>
+                <li class="d-flex justify-content-between"><span>Saturday</span><span>9:00 AM – 8:00 PM</span></li>
+                <li class="d-flex justify-content-between"><span>Sunday</span><span>9:00 AM – 8:00 PM</span></li>
+            </ul>
+            
+        </div>
+    </div>
+</section>
+
+
+
+

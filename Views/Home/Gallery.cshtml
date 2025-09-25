@@ -1,0 +1,194 @@
+﻿@{
+    ViewData["Title"] = "Rockaway Flower Shop - Gallery";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    // Your image filenames (in wwwroot/images)
+    var images = new[]
+    {
+        "2966293307432705832.JPEG",
+        "3611142943485474511.JPEG",
+        "8743826365610526321.JPEG",
+        "image000005.JPEG",
+        "IMG_1224.JPEG",
+        "IMG_1247.JPEG",
+        "IMG_1273.JPEG",
+        "IMG_1274.JPEG",
+        "IMG_1300.JPEG",
+        "IMG_1303.JPEG",
+        "IMG_1311.JPEG",
+        "IMG_1312.JPEG",
+        "IMG_1313.JPEG",
+        "IMG_1314.JPEG",
+        "IMG_1316.JPEG",
+        "IMG_1319.JPEG",
+        "IMG_1320.JPEG",
+        "IMG_4894.JPEG",
+        "IMG_4913.JPEG",
+        "IMG_4896.JPEG",
+        "IMG_4897.JPEG",
+        "IMG_4903.JPEG"
+
+    };
+}
+
+<!-- Header Section -->
+<section class="py-4 text-center bg-light border rounded mb-4 shadow-sm">
+    <div class="container">
+        <h2 class="fw-bold mb-2">Available Exclusively at Rockaway Flower Shop</h2>
+        <p class="lead mb-0">Please call (347) 339-1695 for availability</p>
+    </div>
+</section>
+
+<!-- Carousel Wrapper (larger) -->
+<div class="d-flex justify-content-center">
+    <div id="shopCarousel" class="carousel slide w-100" style="max-width:1200px;" data-bs-ride="carousel" data-bs-interval="3500">
+
+        <!-- Indicators (dynamic) -->
+        <div class="carousel-indicators">
+            @for (var i = 0; i < images.Length; i++)
+            {
+                <button type="button"
+                        data-bs-target="#shopCarousel"
+                        data-bs-slide-to="@i"
+                        class="@(i == 0 ? "active" : "")"
+                        @(i == 0 ? "aria-current=\"true\"" : "")
+                        aria-label="Slide @(i + 1)"></button>
+            }
+        </div>
+
+        <!-- Slides (dynamic, fixed tall height, click to open lightbox) -->
+        <div class="carousel-inner rounded-3 shadow">
+            @for (var i = 0; i < images.Length; i++)
+            {
+                <div class="carousel-item @(i == 0 ? "active" : "")">
+                    <img src="~/images/@images[i]"
+                         data-full="~/images/@images[i]"
+                         data-index="@i"
+                         class="d-block w-100"
+                         style="height:650px; object-fit:cover; cursor:pointer;"
+                         alt="@System.IO.Path.GetFileNameWithoutExtension(images[i])"
+                         title="Click to view"
+                         data-bs-toggle="modal"
+                         data-bs-target="#lightboxModal"
+                         asp-append-version="true" />
+                </div>
+            }
+        </div>
+
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#shopCarousel" data-bs-slide="prev" aria-label="Previous">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#shopCarousel" data-bs-slide="next" aria-label="Next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+    </div>
+</div>
+
+<!-- Lightbox Modal -->
+<div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content bg-black">
+            <div class="modal-header border-0">
+                <h5 class="modal-title text-white" id="lightboxCaption"></h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0 position-relative">
+                <img id="lightboxImg" src="" alt="" class="img-fluid w-100" style="max-height:85vh; object-fit:contain;" />
+                <!-- Prev/Next buttons inside modal -->
+                <button type="button" id="lightboxPrev" class="btn btn-light position-absolute top-50 start-0 translate-middle-y ms-2" aria-label="Previous">
+                    ‹
+                </button>
+                <button type="button" id="lightboxNext" class="btn btn-light position-absolute top-50 end-0 translate-middle-y me-2" aria-label="Next">
+                    ›
+                </button>
+            </div>
+            <div class="modal-footer justify-content-between border-0">
+                <a id="lightboxDownload" class="btn btn-outline-light" href="#" target="_blank" download>Download</a>
+                <a id="lightboxOpenNew" class="btn btn-outline-light" href="#" target="_blank">Open in new tab</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Pause carousel on hover
+        const carouselEl = document.getElementById('shopCarousel');
+        const carousel = bootstrap.Carousel.getOrCreateInstance(carouselEl);
+        carouselEl.addEventListener('mouseenter', () => carousel.pause());
+        carouselEl.addEventListener('mouseleave', () => carousel.cycle());
+
+        // Lightbox logic
+        const modalEl = document.getElementById('lightboxModal');
+        const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+
+        const imgs = Array.from(document.querySelectorAll('#shopCarousel .carousel-item img'));
+        const lbImg = document.getElementById('lightboxImg');
+        const lbCaption = document.getElementById('lightboxCaption');
+        const btnPrev = document.getElementById('lightboxPrev');
+        const btnNext = document.getElementById('lightboxNext');
+        const linkDownload = document.getElementById('lightboxDownload');
+        const linkOpenNew = document.getElementById('lightboxOpenNew');
+
+        let currentIndex = 0;
+        function showLightbox(index) {
+            if (index < 0) index = imgs.length - 1;
+            if (index >= imgs.length) index = imgs.length - 1; // clamp end; or wrap to 0 if preferred
+            currentIndex = index;
+
+            const el = imgs[currentIndex];
+            const full = el.getAttribute('data-full') || el.getAttribute('src');
+            const caption = el.getAttribute('alt') || '';
+
+            // Resolve MVC ~ path in attributes by letting the browser handle it via el.src when possible
+            // If 'full' starts with "~", try to use the img's src as absolute
+            const resolvedSrc = full.startsWith('~') ? el.src : full;
+
+            lbImg.src = resolvedSrc;
+            lbImg.alt = caption;
+            lbCaption.textContent = caption;
+
+            linkDownload.href = resolvedSrc;
+            linkOpenNew.href = resolvedSrc;
+        }
+
+        // Click on any carousel image opens lightbox (handled by data-bs-toggle), we also set the right image
+        imgs.forEach(img => {
+            img.addEventListener('click', (e) => {
+                const idx = parseInt(img.getAttribute('data-index'), 10) || 0;
+                showLightbox(idx);
+                // pause carousel while modal is open
+                carousel.pause();
+            });
+        });
+
+        // Prev / Next buttons inside modal
+        btnPrev.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + imgs.length) % imgs.length;
+            showLightbox(currentIndex);
+        });
+        btnNext.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % imgs.length;
+            showLightbox(currentIndex);
+        });
+
+        // Keyboard navigation when modal is open
+        let keyHandler = null;
+        modalEl.addEventListener('shown.bs.modal', () => {
+            keyHandler = (e) => {
+                if (e.key === 'ArrowLeft') btnPrev.click();
+                if (e.key === 'ArrowRight') btnNext.click();
+            };
+            document.addEventListener('keydown', keyHandler);
+        });
+        modalEl.addEventListener('hidden.bs.modal', () => {
+            if (keyHandler) {
+                document.removeEventListener('keydown', keyHandler);
+                keyHandler = null;
+            }
+            // resume carousel when closing modal
+            carousel.cycle();
+        });
+    </script>
+}
