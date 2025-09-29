@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <rect width="453.987" height="462.577" fill="#7A36CC" y="26.994" style="stroke-width: 1px;" x="26.994"/>
+  <g fill="#FFFFFF" font-family="Georgia, 'Times New Roman', serif" font-weight="900" text-anchor="middle" transform="matrix(1.100066, 0, 0, 1.816575, 41.843307, -197.68808)" style="">
+    <text x="198" y="220" font-size="56" letter-spacing="2" style="white-space: pre;">ROCKAWAY</text>
+    <text x="198" y="360" font-size="46" letter-spacing="1" style="white-space: pre;">FLOWER SHOP</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 252.576706, 295.705536)">
+    <g fill="#FF6FA5">
+      <ellipse cx="0" cy="-80" rx="20" ry="40" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-80" rx="20" ry="40" transform="rotate(30)"/>
+      <ellipse cx="0" cy="-80" rx="20" ry="40" transform="rotate(60)"/>
+      <ellipse cx="0" cy="-80" rx="20" ry="40" transform="rotate(90)"/>
+      <ellipse cx="0" cy="-80" rx="20" ry="40" transform="rotate(120)"/>
+      <ellipse cx="0" cy="-80" rx="20" ry="40" transform="rotate(150)"/>
+      <ellipse cx="0" cy="-80" rx="20" ry="40" transform="rotate(180)"/>
+      <ellipse cx="0" cy="-80" rx="20" ry="40" transform="rotate(210)"/>
+      <ellipse cx="0" cy="-80" rx="20" ry="40" transform="rotate(240)"/>
+      <ellipse cx="0" cy="-80" rx="20" ry="40" transform="rotate(270)"/>
+      <ellipse cx="0" cy="-80" rx="20" ry="40" transform="rotate(300)"/>
+      <ellipse cx="0" cy="-80" rx="20" ry="40" transform="rotate(330)"/>
+    </g>
+    <circle cx="0" cy="0" r="28" fill="#FFC0D9"/>
+  </g>
+</svg>
