@@ -1,63 +1,59 @@
 ﻿@{
-    ViewBag.Title = "Rockaway Flower Shop | Florist in Ozone Park, NY – Fresh Bouquets & Same-Day Delivery";
+    ViewData["Title"] = "Rockaway Flower Shop | Florist in Ozone Park, NY – Fresh Bouquets & Same-Day Delivery";
     ViewBag.MetaDescription = "Rockaway Flower Shop in Ozone Park, NY offers fresh flowers, custom bouquets, wedding and event florals, funeral arrangements, and same-day local delivery. Visit 90-01 Rockaway Blvd or call (347) 339-1695 today.";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     // Your image filenames (in wwwroot/images/gallery and wwwroot/images/gallery-full)
     var images = new[]
     {
-    // Existing images
-    "2966293307432705832.JPEG",
-    "3611142943485474511.JPEG",
-    "8743826365610526321.JPEG",
-    "image000005.JPEG",
-    "IMG_1224.JPEG",
-    "IMG_1247.JPEG",
-    "IMG_1273.JPEG",
-    "IMG_1274.JPEG",
-    "IMG_1300.JPEG",
-    "IMG_1303.JPEG",
-    "IMG_1311.JPEG",
-    "IMG_1312.JPEG",
-    "IMG_1313.JPEG",
-    "IMG_1314.JPEG",
-    "IMG_1316.JPEG",
-    "IMG_1319.JPEG",
-    "IMG_1320.JPEG",
-    "IMG_4894.JPEG",
-    "IMG_4913.JPEG",
-    "IMG_4896.JPEG",
-    "IMG_4897.JPEG",
-    "IMG_4903.JPEG",
+        // Existing images
+        "2966293307432705832.JPEG",
+        "3611142943485474511.JPEG",
+        "8743826365610526321.JPEG",
+        "image000005.JPEG",
+        "IMG_1224.JPEG",
+        "IMG_1247.JPEG",
+        "IMG_1273.JPEG",
+        "IMG_1274.JPEG",
+        "IMG_1300.JPEG",
+        "IMG_1303.JPEG",
+        "IMG_1311.JPEG",
+        "IMG_1312.JPEG",
+        "IMG_1313.JPEG",
+        "IMG_1314.JPEG",
+        "IMG_1316.JPEG",
+        "IMG_1319.JPEG",
+        "IMG_1320.JPEG",
+        "IMG_4894.JPEG",
+        "IMG_4913.JPEG",
+        "IMG_4896.JPEG",
+        "IMG_4897.JPEG",
+        "IMG_4903.JPEG",
 
-    // Newly added batch (verified)
-    "IMG_1406.JPEG",
-    "IMG_1407.JPEG",
-    "IMG_1449.JPEG",
-    "IMG_1454.JPEG",
-    "IMG_1524.JPEG",
-    "IMG_1525.JPEG",
-    "IMG_1537.JPEG",
-    "IMG_1540.JPEG",
-    "IMG_1556.JPEG",
-    "IMG_1557.JPEG",
-    "IMG_4731.JPEG",
-    "IMG_4982.JPEG"
-};
+        // Newly added batch (verified)
+        "IMG_1406.JPEG",
+        "IMG_1407.JPEG",
+        "IMG_1449.JPEG",
+        "IMG_1454.JPEG",
+        "IMG_1524.JPEG",
+        "IMG_1525.JPEG",
+        "IMG_1537.JPEG",
+        "IMG_1540.JPEG",
+        "IMG_1556.JPEG",
+        "IMG_1557.JPEG",
+        "IMG_4731.JPEG",
+        "IMG_4982.JPEG"
+    };
 
     // Base paths (small for carousel, large for lightbox)
-    var smallBase = Url.Content("~/images/gallery/");
-    var fullBase = Url.Content("~/images/gallery-full/");
-
+    var smallBase = Url.Content("~/images/gallery/");       // thumbnails/smaller
+    var fullBase  = Url.Content("~/images/gallery-full/");  // full size
 }
-
-
 
 <!-- About Section -->
 <section id="about" class="container my-5">
     <div class="row">
         <div class="col-md-6 align-top">
-
             <p>
                 We are conveniently located at <strong>90-01 Rockaway Boulevard, Ozone Park NY 11416</strong>, making it easy for residents of Ozone Park and neighboring communities to stop by. Our shop is just minutes away from major avenues and public transportation, so picking up flowers on the way to work, home, or a special event is always simple.
             </p>
@@ -67,17 +63,20 @@
             <p>
                 We also offer <strong>same-day local delivery</strong> throughout Ozone Park, Howard Beach, South Ozone Park, and nearby neighborhoods—bringing beauty and joy right to your doorstep. Stop in today and let us create something special for you or your loved ones!
             </p>
-
-            
-
         </div>
+
         <div class="col-md-2"></div>
+
         <div class="col-md-4 text-end">
-            <img src="~/images/IMG_4903.JPEG" class="img-fluid rounded shadow" alt="Rockaway Flower Shop">
+            <img src="~/images/IMG_4903.JPEG"
+                 class="img-fluid rounded shadow"
+                 alt="Rockaway Flower Shop"
+                 asp-append-version="true"
+                 loading="lazy"
+                 decoding="async" />
         </div>
     </div>
 </section>
-
 
 <!-- Services Section -->
 <section id="services" class="bg-white py-5">
@@ -88,8 +87,8 @@
       <div class="col-md-4">
         <div class="card shadow-sm h-100">
           <div class="card-body">
-            <img src="~/images/icon_FreshFlowers1.JPEG" alt="Fresh Flowers Icon" 
-                 class="mb-3 rounded" style="width:120px; height:auto;">
+            <img src="~/images/gallery/icon_FreshFlowers1.JPEG" alt="Fresh Flowers Icon"
+                 class="mb-3 rounded" style="width:120px; height:auto;" loading="lazy" decoding="async">
             <h5 class="card-title">Freshest Flowers Daily</h5>
             <p class="card-text">We provide the freshest flowers every day to brighten any occasion.</p>
           </div>
@@ -99,8 +98,8 @@
       <div class="col-md-4">
         <div class="card shadow-sm h-100">
           <div class="card-body">
-            <img src="~/images/icon_CustomBouquets1.JPEG" alt="Custom Bouquets Icon" 
-                 class="mb-3 rounded" style="width:120px; height:auto;">
+            <img src="~/images/gallery/icon_CustomBouquets1.JPEG" alt="Custom Bouquets Icon"
+                 class="mb-3 rounded" style="width:120px; height:auto;" loading="lazy" decoding="async">
             <h5 class="card-title">Custom Bouquets</h5>
             <p class="card-text">Personalized arrangements tailored to your style and preferences.</p>
           </div>
@@ -110,8 +109,8 @@
       <div class="col-md-4">
         <div class="card shadow-sm h-100">
           <div class="card-body">
-            <img src="~/images/icon_SeasonalBouquets.JPEG" alt="Seasonal Bouquets Icon" 
-                 class="mb-3 rounded" style="width:120px; height:auto;">
+            <img src="~/images/gallery/icon_SeasonalBouquets.JPEG" alt="Seasonal Bouquets Icon"
+                 class="mb-3 rounded" style="width:120px; height:auto;" loading="lazy" decoding="async">
             <h5 class="card-title">Seasonal Fresh Bouquets</h5>
             <p class="card-text">Beautiful seasonal selections created from the finest flowers in bloom.</p>
           </div>
@@ -121,8 +120,8 @@
       <div class="col-md-4">
         <div class="card shadow-sm h-100">
           <div class="card-body">
-            <img src="~/images/icon_WeddingArrangements.JPEG" alt="Wedding Arrangements Icon" 
-                 class="mb-3 rounded" style="width:120px; height:auto;">
+            <img src="~/images/gallery/icon_WeddingArrangements.JPEG" alt="Wedding Arrangements Icon"
+                 class="mb-3 rounded" style="width:120px; height:auto;" loading="lazy" decoding="async">
             <h5 class="card-title">Wedding Arrangements</h5>
             <p class="card-text">Elegant floral designs to make your wedding day truly unforgettable.</p>
           </div>
@@ -132,8 +131,8 @@
       <div class="col-md-4">
         <div class="card shadow-sm h-100">
           <div class="card-body">
-            <img src="~/images/icon_FuneralAndSympathy1.jpeg" alt="Funeral and Sympathy Flowers Icon" 
-                 class="mb-3 rounded" style="width:120px; height:auto;">
+            <img src="~/images/gallery/icon_FuneralAndSympathy1.jpeg" alt="Funeral and Sympathy Flowers Icon"
+                 class="mb-3 rounded" style="width:120px; height:auto;" loading="lazy" decoding="async">
             <h5 class="card-title">Funeral & Sympathy Flowers</h5>
             <p class="card-text">Thoughtful and respectful arrangements to honor loved ones.</p>
           </div>
@@ -156,14 +155,20 @@
   </div>
 </section>
 
+<!-- Carousel Header -->
+<section class="py-4 text-center bg-light border rounded mb-4 shadow-sm">
+    <div class="container">
+        <h2 class="fw-bold mb-2">Available Exclusively at Rockaway Flower Shop</h2>
+        <p class="lead mb-0">Please call (347) 339-1695 for availability</p>
+    </div>
+</section>
 
-
-<!-- Carousel -->
-<!-- Carousel Wrapper (larger) -->
+<!-- Carousel Wrapper -->
 <div class="d-flex justify-content-center">
-    <div id="shopCarousel" class="carousel slide w-100" style="max-width:1200px;" data-bs-ride="carousel" data-bs-interval="3500">
+    <div id="shopCarousel" class="carousel slide w-100" style="max-width:1200px;"
+         data-bs-ride="carousel" data-bs-interval="3500">
 
-        <!-- Indicators (dynamic) -->
+        <!-- Indicators -->
         <div class="carousel-indicators">
             @for (var i = 0; i < images.Length; i++)
             {
@@ -171,18 +176,19 @@
                         data-bs-target="#shopCarousel"
                         data-bs-slide-to="@i"
                         class="@(i == 0 ? "active" : "")"
-                        @(i == 0 ? "aria-current=\"true\"" : "")
+                        @(i == 0 ? "aria-current=\"true\"" : null)
                         aria-label="Slide @(i + 1)"></button>
             }
         </div>
 
-        <!-- Slides (dynamic, fixed tall height, click to open lightbox) -->
+        <!-- Slides -->
         <div class="carousel-inner rounded-3 shadow">
             @for (var i = 0; i < images.Length; i++)
             {
                 var filename = images[i];
                 var smallUrl = smallBase + filename;
                 var fullUrl = fullBase + filename;
+                var title = System.IO.Path.GetFileNameWithoutExtension(filename);
 
                 <div class="carousel-item @(i == 0 ? "active" : "")">
                     <img src="@smallUrl"
@@ -190,8 +196,9 @@
                          data-index="@i"
                          class="d-block w-100"
                          style="height:650px; object-fit:cover; cursor:pointer;"
-                         alt="@System.IO.Path.GetFileNameWithoutExtension(filename)"
+                         alt="@title"
                          title="Click to view"
+                         role="button"
                          data-bs-toggle="modal"
                          data-bs-target="#lightboxModal"
                          asp-append-version="true"
@@ -219,19 +226,23 @@
                 <h5 class="modal-title text-white" id="lightboxCaption"></h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+
             <div class="modal-body p-0 position-relative">
-                <img id="lightboxImg" src="" alt="" class="img-fluid w-100" style="max-height:85vh; object-fit:contain;" />
-                <!-- Prev/Next buttons inside modal -->
-                <button type="button" id="lightboxPrev" class="btn btn-light position-absolute top-50 start-0 translate-middle-y ms-2" aria-label="Previous">
-                    ‹
-                </button>
-                <button type="button" id="lightboxNext" class="btn btn-light position-absolute top-50 end-0 translate-middle-y me-2" aria-label="Next">
-                    ›
-                </button>
+                <img id="lightboxImg" src="" alt="" class="img-fluid w-100"
+                     style="max-height:85vh; object-fit:contain;" />
+
+                <button type="button" id="lightboxPrev"
+                        class="btn btn-light position-absolute top-50 start-0 translate-middle-y ms-2"
+                        aria-label="Previous">‹</button>
+
+                <button type="button" id="lightboxNext"
+                        class="btn btn-light position-absolute top-50 end-0 translate-middle-y me-2"
+                        aria-label="Next">›</button>
             </div>
+
             <div class="modal-footer justify-content-between border-0">
                 <a id="lightboxDownload" class="btn btn-outline-light" href="#" target="_blank" download>Download</a>
-                <a id="lightboxOpenNew" class="btn btn-outline-light" href="#" target="_blank">Open in new tab</a>
+                <a id="lightboxOpenNew" class="btn btn-outline-light" href="#" target="_blank" rel="noopener">Open in new tab</a>
             </div>
         </div>
     </div>
@@ -239,88 +250,84 @@
 
 @section Scripts {
     <script>
-        // Pause carousel on hover
-        const carouselEl = document.getElementById('shopCarousel');
-        const carousel = bootstrap.Carousel.getOrCreateInstance(carouselEl);
-        carouselEl.addEventListener('mouseenter', () => carousel.pause());
-        carouselEl.addEventListener('mouseleave', () => carousel.cycle());
+        (function () {
+            // Guard: if Bootstrap JS isn't loaded, don't hard-break the page
+            if (!window.bootstrap) return;
 
-        // Lightbox logic
-        const modalEl = document.getElementById('lightboxModal');
-        const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+            const carouselEl = document.getElementById('shopCarousel');
+            if (!carouselEl) return;
 
-        const imgs = Array.from(document.querySelectorAll('#shopCarousel .carousel-item img'));
-        const lbImg = document.getElementById('lightboxImg');
-        const lbCaption = document.getElementById('lightboxCaption');
-        const btnPrev = document.getElementById('lightboxPrev');
-        const btnNext = document.getElementById('lightboxNext');
-        const linkDownload = document.getElementById('lightboxDownload');
-        const linkOpenNew = document.getElementById('lightboxOpenNew');
+            const carousel = bootstrap.Carousel.getOrCreateInstance(carouselEl);
 
-        let currentIndex = 0;
+            // Pause carousel on hover
+            carouselEl.addEventListener('mouseenter', () => carousel.pause());
+            carouselEl.addEventListener('mouseleave', () => carousel.cycle());
 
-        function showLightbox(index) {
-            if (index < 0) index = imgs.length - 1;
-            if (index >= imgs.length) index = imgs.length - 1; // clamp end; change to 0 to wrap if you prefer
-            currentIndex = index;
+            // Lightbox logic
+            const modalEl = document.getElementById('lightboxModal');
+            const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
 
-            const el = imgs[currentIndex];
-            const full = el.getAttribute('data-full') || el.src;
-            const caption = el.getAttribute('alt') || '';
+            const imgs = Array.from(document.querySelectorAll('#shopCarousel .carousel-item img'));
+            const lbImg = document.getElementById('lightboxImg');
+            const lbCaption = document.getElementById('lightboxCaption');
+            const btnPrev = document.getElementById('lightboxPrev');
+            const btnNext = document.getElementById('lightboxNext');
+            const linkDownload = document.getElementById('lightboxDownload');
+            const linkOpenNew = document.getElementById('lightboxOpenNew');
 
-            lbImg.src = full;
-            lbImg.alt = caption;
-            lbCaption.textContent = caption;
+            let currentIndex = 0;
 
-            linkDownload.href = full;
-            linkOpenNew.href = full;
-        }
+            function showLightbox(index) {
+                if (!imgs.length) return;
 
-        // Click on any carousel image opens lightbox (handled by data-bs-toggle), we also set the right image
-        imgs.forEach(img => {
-            img.addEventListener('click', () => {
-                const idx = parseInt(img.getAttribute('data-index'), 10) || 0;
-                showLightbox(idx);
-                // pause carousel while modal is open
-                carousel.pause();
-            });
-        });
+                // Wrap both directions
+                index = (index + imgs.length) % imgs.length;
+                currentIndex = index;
 
-        // Prev / Next buttons inside modal
-        btnPrev.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + imgs.length) % imgs.length;
-            showLightbox(currentIndex);
-        });
+                const el = imgs[currentIndex];
+                const full = el.getAttribute('data-full') || el.src;
+                const caption = el.getAttribute('alt') || '';
 
-        btnNext.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % imgs.length;
-            showLightbox(currentIndex);
-        });
+                lbImg.src = full;
+                lbImg.alt = caption;
+                lbCaption.textContent = caption;
 
-        // Keyboard navigation when modal is open
-        let keyHandler = null;
-        modalEl.addEventListener('shown.bs.modal', () => {
-            keyHandler = (e) => {
-                if (e.key === 'ArrowLeft') btnPrev.click();
-                if (e.key === 'ArrowRight') btnNext.click();
-            };
-            document.addEventListener('keydown', keyHandler);
-        });
-
-        modalEl.addEventListener('hidden.bs.modal', () => {
-            if (keyHandler) {
-                document.removeEventListener('keydown', keyHandler);
-                keyHandler = null;
+                linkDownload.href = full;
+                linkOpenNew.href = full;
             }
-            // resume carousel when closing modal
-            carousel.cycle();
-        });
+
+            imgs.forEach(img => {
+                img.addEventListener('click', () => {
+                    const idx = parseInt(img.getAttribute('data-index'), 10);
+                    showLightbox(Number.isFinite(idx) ? idx : 0);
+                    carousel.pause();
+                });
+            });
+
+            btnPrev.addEventListener('click', () => showLightbox(currentIndex - 1));
+            btnNext.addEventListener('click', () => showLightbox(currentIndex + 1));
+
+            // Keyboard nav when modal is open
+            let keyHandler = null;
+
+            modalEl.addEventListener('shown.bs.modal', () => {
+                keyHandler = (e) => {
+                    if (e.key === 'ArrowLeft') btnPrev.click();
+                    if (e.key === 'ArrowRight') btnNext.click();
+                };
+                document.addEventListener('keydown', keyHandler);
+            });
+
+            modalEl.addEventListener('hidden.bs.modal', () => {
+                if (keyHandler) {
+                    document.removeEventListener('keydown', keyHandler);
+                    keyHandler = null;
+                }
+                carousel.cycle();
+            });
+        })();
     </script>
 }
-
-<!-- End Carousel -->
-
-
 
 <!-- Contact Section -->
 <section id="contact" class="container my-5">
@@ -328,14 +335,15 @@
         <div class="col-md-6">
             <h2>Visit or Contact Us</h2>
             <address class="mb-2">
-                <a class="fw-semibold" target="_blank" rel="noopener" href="https://maps.google.com/?q=90-01+Rockaway+Boulevard+Ozone+Park+NY+11416">Rockaway Flower Shop</a>
+                <a class="fw-semibold" target="_blank" rel="noopener"
+                   href="https://maps.google.com/?q=90-01+Rockaway+Boulevard+Ozone+Park+NY+11416">Rockaway Flower Shop</a>
                 <div>90-01 Rockaway Boulevard</div>
                 <div>Ozone Park, NY 11416</div>
             </address>
             <p class="mb-1">📞 <a href="tel:13473391695">(347) 339-1695</a></p>
             <p class="mb-3">📧 <a href="mailto:rockawayflower@gmail.com">rockawayflower@gmail.com</a></p>
-            
         </div>
+
         <div class="col-md-6">
             <h2>Hours</h2>
             <ul class="list-unstyled small">
@@ -347,11 +355,6 @@
                 <li class="d-flex justify-content-between"><span>Saturday</span><span>9:00 AM – 8:00 PM</span></li>
                 <li class="d-flex justify-content-between"><span>Sunday</span><span>9:00 AM – 8:00 PM</span></li>
             </ul>
-            
         </div>
     </div>
 </section>
-
-
-
-

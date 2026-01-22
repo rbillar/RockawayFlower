@@ -2,6 +2,47 @@
     ViewData["Title"] = "Rockaway Flower Shop - Gallery";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
+    // Loop through all images
+    var galleryImages = new[]
+    {
+        // Existing images
+        "2966293307432705832.JPEG",
+        "3611142943485474511.JPEG",
+        "8743826365610526321.JPEG",
+        "image000005.JPEG",
+        "IMG_1224.JPEG",
+        "IMG_1247.JPEG",
+        "IMG_1273.JPEG",
+        "IMG_1274.JPEG",
+        "IMG_1300.JPEG",
+        "IMG_1303.JPEG",
+        "IMG_1311.JPEG",
+        "IMG_1312.JPEG",
+        "IMG_1313.JPEG",
+        "IMG_1314.JPEG",
+        "IMG_1316.JPEG",
+        "IMG_1319.JPEG",
+        //"IMG_1320.JPEG",
+        "IMG_4894.JPEG",
+        "IMG_4913.JPEG",
+        "IMG_4896.JPEG",
+        "IMG_4897.JPEG",
+        //"IMG_4903.JPEG",
+
+        // Newly added batch (verified)
+        "IMG_1540.JPEG",
+        "IMG_1406.JPEG",
+        "IMG_1407.JPEG",
+        "IMG_1449.JPEG",
+        "IMG_1454.JPEG",
+        "IMG_1524.JPEG",
+        "IMG_1525.JPEG",
+        "IMG_1537.JPEG",
+        "IMG_1556.JPEG",
+        "IMG_1557.JPEG",
+        "IMG_4731.JPEG",
+        "IMG_4982.JPEG"
+    };
 }
 
 <!-- Header Section -->
@@ -15,71 +56,23 @@
 <!-- Gallery Section -->
 <section id="gallery" class="bg-light py-5">
     <div class="container">
-
-<section class="py-4 text-center bg-light border rounded mb-4 shadow-sm">
-    <div class="container">
-        <h2 class="fw-bold mb-2">Available Exclusively at Rockaway Flower Shop</h2>
-                <p class="lead mb-0">Please call (347) 339-1695 for availability</p>
-    </div>
-</section>
         <div class="row g-4">
-
-            @* Loop through all images *@
-            @{
-                var galleryImages = new[]
-                {
-                        // Existing images
-                        "2966293307432705832.JPEG",
-                        "3611142943485474511.JPEG",
-                        "8743826365610526321.JPEG",
-                        "image000005.JPEG",
-                        "IMG_1224.JPEG",
-                        "IMG_1247.JPEG",
-                        "IMG_1273.JPEG",
-                        "IMG_1274.JPEG",
-                        "IMG_1300.JPEG",
-                        "IMG_1303.JPEG",
-                        "IMG_1311.JPEG",
-                        "IMG_1312.JPEG",
-                        "IMG_1313.JPEG",
-                        "IMG_1314.JPEG",
-                        "IMG_1316.JPEG",
-                        "IMG_1319.JPEG",
-                        //"IMG_1320.JPEG",
-                        "IMG_4894.JPEG",
-                        "IMG_4913.JPEG",
-                        "IMG_4896.JPEG",
-                        "IMG_4897.JPEG",
-                        //"IMG_4903.JPEG",
-
-                        // Newly added batch (verified)
-                        "IMG_1540.JPEG",
-                        "IMG_1406.JPEG",
-                        "IMG_1407.JPEG",
-                        "IMG_1449.JPEG",
-                        "IMG_1454.JPEG",
-                        "IMG_1524.JPEG",
-                        "IMG_1525.JPEG",
-                        "IMG_1537.JPEG",
-
-                        "IMG_1556.JPEG",
-                        "IMG_1557.JPEG",
-                        "IMG_4731.JPEG",
-                        "IMG_4982.JPEG"
-                };
-            }
-
             @for (int i = 0; i < galleryImages.Length; i++)
             {
+                var file = galleryImages[i];
+                var title = System.IO.Path.GetFileNameWithoutExtension(file);
+
                 <div class="col-6 col-md-4 col-lg-3">
-                    <a href="~/images/gallery/@galleryImages[i]" data-lightbox="flowers" data-title="@galleryImages[i]">
-                        <img src="~/images/gallery-full/@galleryImages[i]"
+                    <!-- Lightbox should open the FULL image -->
+                    <a href="~/images/gallery-full/@file" data-lightbox="flowers" data-title="@title">
+                        <!-- Page should load the smaller thumbnail/list image -->
+                        <img src="~/images/gallery/@file"
                              class="img-fluid rounded shadow-sm hover-shadow"
-                             alt="@System.IO.Path.GetFileNameWithoutExtension(galleryImages[i])" />
+                             alt="@title"
+                             loading="lazy" />
                     </a>
                 </div>
             }
         </div>
     </div>
 </section>
-
