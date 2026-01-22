@@ -9,3 +9,23 @@ site-dvaqqu0r6.godaddysites.com
 rockawayflower.com
 
 https://dashboard.stripe.com/
+
+
+<!-- Announcement Section -->
+<section id="announcement" class="bg-light py-4 border-bottom">
+    <div class="container text-center">
+        <h2 class="mb-3">🌸 Grand Opening Specials! 🌸</h2>
+        <p class="lead mb-3">
+            We’re excited to announce that we’ve just opened our doors and are celebrating with 
+            <strong>grand opening specials</strong> you won’t want to miss. Discover a wide variety of 
+            fresh, beautiful flowers at unbeatable prices—perfect for any occasion.
+        </p>
+        <p class="fw-semibold">
+            Stop by today and take advantage of these amazing deals while they last!
+        </p>
+        <p class="text-muted fst-italic mb-0">
+            With gratitude,<br />
+            The Rockaway Flower Shop Team
+        </p>
+    </div>
+</section>

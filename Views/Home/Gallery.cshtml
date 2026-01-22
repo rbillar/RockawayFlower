@@ -2,33 +2,51 @@
     ViewData["Title"] = "Rockaway Flower Shop - Gallery";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    // Your image filenames (in wwwroot/images)
+    // Your image filenames (in wwwroot/images/gallery and wwwroot/images/gallery-full)
     var images = new[]
     {
-        "2966293307432705832.JPEG",
-        "3611142943485474511.JPEG",
-        "8743826365610526321.JPEG",
-        "image000005.JPEG",
-        "IMG_1224.JPEG",
-        "IMG_1247.JPEG",
-        "IMG_1273.JPEG",
-        "IMG_1274.JPEG",
-        "IMG_1300.JPEG",
-        "IMG_1303.JPEG",
-        "IMG_1311.JPEG",
-        "IMG_1312.JPEG",
-        "IMG_1313.JPEG",
-        "IMG_1314.JPEG",
-        "IMG_1316.JPEG",
-        "IMG_1319.JPEG",
-        "IMG_1320.JPEG",
-        "IMG_4894.JPEG",
-        "IMG_4913.JPEG",
-        "IMG_4896.JPEG",
-        "IMG_4897.JPEG",
-        "IMG_4903.JPEG"
+    // Existing images
+    "2966293307432705832.JPEG",
+    "3611142943485474511.JPEG",
+    "8743826365610526321.JPEG",
+    "image000005.JPEG",
+    "IMG_1224.JPEG",
+    "IMG_1247.JPEG",
+    "IMG_1273.JPEG",
+    "IMG_1274.JPEG",
+    "IMG_1300.JPEG",
+    "IMG_1303.JPEG",
+    "IMG_1311.JPEG",
+    "IMG_1312.JPEG",
+    "IMG_1313.JPEG",
+    "IMG_1314.JPEG",
+    "IMG_1316.JPEG",
+    "IMG_1319.JPEG",
+    "IMG_1320.JPEG",
+    "IMG_4894.JPEG",
+    "IMG_4913.JPEG",
+    "IMG_4896.JPEG",
+    "IMG_4897.JPEG",
+    "IMG_4903.JPEG",
 
-    };
+    // Newly added batch (verified)
+    "IMG_1406.JPEG",
+    "IMG_1407.JPEG",
+    "IMG_1449.JPEG",
+    "IMG_1454.JPEG",
+    "IMG_1524.JPEG",
+    "IMG_1525.JPEG",
+    "IMG_1537.JPEG",
+    "IMG_1540.JPEG",
+    "IMG_1556.JPEG",
+    "IMG_1557.JPEG",
+    "IMG_4731.JPEG",
+    "IMG_4982.JPEG"
+};
+
+    // Base paths (small for carousel, large for lightbox)
+    var smallBase = Url.Content("~/images/gallery/");
+    var fullBase = Url.Content("~/images/gallery-full/");
 }
 
 <!-- Header Section -->
@@ -60,17 +78,23 @@
         <div class="carousel-inner rounded-3 shadow">
             @for (var i = 0; i < images.Length; i++)
             {
+                var filename = images[i];
+                var smallUrl = smallBase + filename;
+                var fullUrl = fullBase + filename;
+
                 <div class="carousel-item @(i == 0 ? "active" : "")">
-                    <img src="~/images/@images[i]"
-                         data-full="~/images/@images[i]"
+                    <img src="@smallUrl"
+                         data-full="@fullUrl"
                          data-index="@i"
                          class="d-block w-100"
                          style="height:650px; object-fit:cover; cursor:pointer;"
-                         alt="@System.IO.Path.GetFileNameWithoutExtension(images[i])"
+                         alt="@System.IO.Path.GetFileNameWithoutExtension(filename)"
                          title="Click to view"
                          data-bs-toggle="modal"
                          data-bs-target="#lightboxModal"
-                         asp-append-version="true" />
+                         asp-append-version="true"
+                         loading="lazy"
+                         decoding="async" />
                 </div>
             }
         </div>
@@ -132,30 +156,27 @@
         const linkOpenNew = document.getElementById('lightboxOpenNew');
 
         let currentIndex = 0;
+
         function showLightbox(index) {
             if (index < 0) index = imgs.length - 1;
-            if (index >= imgs.length) index = imgs.length - 1; // clamp end; or wrap to 0 if preferred
+            if (index >= imgs.length) index = imgs.length - 1; // clamp end; change to 0 to wrap if you prefer
             currentIndex = index;
 
             const el = imgs[currentIndex];
-            const full = el.getAttribute('data-full') || el.getAttribute('src');
+            const full = el.getAttribute('data-full') || el.src;
             const caption = el.getAttribute('alt') || '';
 
-            // Resolve MVC ~ path in attributes by letting the browser handle it via el.src when possible
-            // If 'full' starts with "~", try to use the img's src as absolute
-            const resolvedSrc = full.startsWith('~') ? el.src : full;
-
-            lbImg.src = resolvedSrc;
+            lbImg.src = full;
             lbImg.alt = caption;
             lbCaption.textContent = caption;
 
-            linkDownload.href = resolvedSrc;
-            linkOpenNew.href = resolvedSrc;
+            linkDownload.href = full;
+            linkOpenNew.href = full;
         }
 
         // Click on any carousel image opens lightbox (handled by data-bs-toggle), we also set the right image
         imgs.forEach(img => {
-            img.addEventListener('click', (e) => {
+            img.addEventListener('click', () => {
                 const idx = parseInt(img.getAttribute('data-index'), 10) || 0;
                 showLightbox(idx);
                 // pause carousel while modal is open
@@ -168,6 +189,7 @@
             currentIndex = (currentIndex - 1 + imgs.length) % imgs.length;
             showLightbox(currentIndex);
         });
+
         btnNext.addEventListener('click', () => {
             currentIndex = (currentIndex + 1) % imgs.length;
             showLightbox(currentIndex);
@@ -182,6 +204,7 @@
             };
             document.addEventListener('keydown', keyHandler);
         });
+
         modalEl.addEventListener('hidden.bs.modal', () => {
             if (keyHandler) {
                 document.removeEventListener('keydown', keyHandler);

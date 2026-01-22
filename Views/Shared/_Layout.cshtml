@@ -15,8 +15,12 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/RockawayFlower.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
         html {
@@ -26,6 +30,9 @@
         .scroll-offset {
             scroll-margin-top: 80px;
         }
+
+
+
     </style>
 </head>
 <body>
@@ -51,27 +58,6 @@
                     <li class="nav-item"><a class="nav-link" href="/home/gallery">Gallery</a></li>
                     <li class="nav-item"><a class="nav-link" href="/#contact">Contact</a></li>
                 </ul>
-
-                <a href="https://www.facebook.com/profile.php?id=61581154285394"
-                   target="_blank"
-                   class="position-fixed d-flex justify-content-center align-items-center"
-                   style="
-                      bottom:20px;
-                      right:20px;
-                      width:55px;
-                      height:55px;
-                      background-color:#1877F2;
-                      color:#fff;
-                      border-radius:50%;
-                      font-size:28px;
-                      text-decoration:none;
-                      box-shadow:0 4px 8px rgba(0,0,0,0.3);
-                      z-index:9999;
-                   ">
-                    <i class="bi bi-facebook"></i>
-                   
-                </a>
-
             </div>
         </div>
     </nav>
@@ -83,23 +69,46 @@
 
     <!-- Footer -->
     <footer class="text-white text-center py-3" style="background-color: #7A36CC;">
-        <p class="mb-0">© @DateTime.Now.Year Rockaway Flower Shop • Ozone Park, NY</p>
+        <p class="mb-0">© @DateTime.Now.Year Rockaway Flower Shop • Ozone Park, NY
+       
+            <!-- Facebook link -->
+            <a href="https://www.facebook.com/profile.php?id=61581192760242"
+               target="_blank" rel="noopener"
+               aria-label="Visit us on Facebook"
+               style="
+                     --size: clamp(30px, 9vw, 30px);
+                     width: var(--size);
+                     height: var(--size);
+                     display: inline-flex;
+                     align-items: center;
+                     justify-content: center;
+                     border-radius: 50%;
+                     background: #fff;
+                   
+                     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                     text-decoration: none;
+                     line-height: 0;
+                     -webkit-tap-highlight-color: transparent;
+                   ">
+                <i class="bi bi-facebook" style="font-size: calc(var(--size) * 0.6); color: #1877F2;"></i>
+            </a>
+
+        </p>
+
+
     </footer>
 
 
 
     <!-- Scripts -->
-
-
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <link href="~/lib/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
     <script src="~/lib/lightbox2/2.11.4/js/lightbox.min.js"></script>
 
-
     @await RenderSectionAsync("Scripts", required: false)
 
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

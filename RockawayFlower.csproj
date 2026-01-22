@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\images\gallery\" />
+    <Folder Include="wwwroot\images\gallery-full\" />
     <Folder Include="wwwroot\lib\lightbox2\2.11.4\js\" />
   </ItemGroup>
 

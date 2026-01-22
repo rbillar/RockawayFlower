@@ -4,24 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!-- Announcement Section -->
-<section id="announcement" class="bg-light py-4 border-bottom">
-    <div class="container text-center">
-        <h2 class="mb-3">🌸 Grand Opening Specials! 🌸</h2>
-        <p class="lead mb-3">
-            We’re excited to announce that we’ve just opened our doors and are celebrating with 
-            <strong>grand opening specials</strong> you won’t want to miss. Discover a wide variety of 
-            fresh, beautiful flowers at unbeatable prices—perfect for any occasion.
-        </p>
-        <p class="fw-semibold">
-            Stop by today and take advantage of these amazing deals while they last!
-        </p>
-        <p class="text-muted fst-italic mb-0">
-            With gratitude,<br />
-            The Rockaway Flower Shop Team
-        </p>
-    </div>
-</section>
+
 
 <!-- About Section -->
 <section id="about" class="container my-5">
@@ -146,9 +129,11 @@
             @{
                 var galleryImages = new[]
                 {
+                        // Existing images
                         "2966293307432705832.JPEG",
                         "3611142943485474511.JPEG",
-                        "8743826365610526321.JPEG",     
+                        "8743826365610526321.JPEG",
+                        "image000005.JPEG",
                         "IMG_1224.JPEG",
                         "IMG_1247.JPEG",
                         "IMG_1273.JPEG",
@@ -160,22 +145,35 @@
                         "IMG_1313.JPEG",
                         "IMG_1314.JPEG",
                         "IMG_1316.JPEG",
+                        "IMG_1319.JPEG",
+                        "IMG_1320.JPEG",
                         "IMG_4894.JPEG",
                         "IMG_4913.JPEG",
                         "IMG_4896.JPEG",
-                        "image000005.JPEG",
-                        "IMG_1320.JPEG",
-                        "IMG_1319.JPEG",
                         "IMG_4897.JPEG",
-                        "IMG_4901.JPEG",
-                        };
+                        "IMG_4903.JPEG",
+
+                        // Newly added batch (verified)
+                        "IMG_1406.JPEG",
+                        "IMG_1407.JPEG",
+                        "IMG_1449.JPEG",
+                        "IMG_1454.JPEG",
+                        "IMG_1524.JPEG",
+                        "IMG_1525.JPEG",
+                        "IMG_1537.JPEG",
+                        "IMG_1540.JPEG",
+                        "IMG_1556.JPEG",
+                        "IMG_1557.JPEG",
+                        "IMG_4731.JPEG",
+                        "IMG_4982.JPEG"
+                };
             }
 
             @for (int i = 0; i < galleryImages.Length; i++)
             {
                 <div class="col-6 col-md-4 col-lg-3">
-                    <a href="~/images/@galleryImages[i]" data-lightbox="flowers" data-title="@galleryImages[i]">
-                        <img src="~/images/@galleryImages[i]"
+                    <a href="~/images/gallery-full/@galleryImages[i]" data-lightbox="flowers" data-title="@galleryImages[i]">
+                        <img src="~/images/gallery/@galleryImages[i]"
                              class="img-fluid rounded shadow-sm hover-shadow"
                              alt="@System.IO.Path.GetFileNameWithoutExtension(galleryImages[i])" />
                     </a>
