@@ -6,6 +6,26 @@
     // Your image filenames (in wwwroot/images/gallery and wwwroot/images/gallery-full)
     var images = new[]
     {
+        // 20260124 added
+        "IMG_1606.JPEG",
+        "IMG_1607.JPEG",
+        "IMG_1608.JPEG",
+        "IMG_1609.JPEG",
+        "IMG_1610.JPEG",
+        "IMG_1611.JPEG",
+        // 20260122 added
+        "IMG_1406.JPEG",
+        "IMG_1407.JPEG",
+        "IMG_1449.JPEG",
+        "IMG_1454.JPEG",
+        "IMG_1524.JPEG",
+        "IMG_1525.JPEG",
+        "IMG_1537.JPEG",
+        "IMG_1540.JPEG",
+        "IMG_1556.JPEG",
+        "IMG_1557.JPEG",
+        "IMG_4731.JPEG",
+        "IMG_4982.JPEG",
         // Existing images
         "2966293307432705832.JPEG",
         "3611142943485474511.JPEG",
@@ -29,20 +49,6 @@
         "IMG_4896.JPEG",
         "IMG_4897.JPEG",
         "IMG_4903.JPEG",
-
-        // Newly added batch (verified)
-        "IMG_1406.JPEG",
-        "IMG_1407.JPEG",
-        "IMG_1449.JPEG",
-        "IMG_1454.JPEG",
-        "IMG_1524.JPEG",
-        "IMG_1525.JPEG",
-        "IMG_1537.JPEG",
-        "IMG_1540.JPEG",
-        "IMG_1556.JPEG",
-        "IMG_1557.JPEG",
-        "IMG_4731.JPEG",
-        "IMG_4982.JPEG"
     };
 
     // Base paths (small for carousel, large for lightbox)
@@ -156,7 +162,7 @@
 </section>
 
 <!-- Carousel Header -->
-<section class="py-4 text-center bg-light border rounded mb-4 shadow-sm">
+<section class="py-4 text-center bg-light border rounded mb-0 shadow-sm">
     <div class="container">
         <h2 class="fw-bold mb-2">Available Exclusively at Rockaway Flower Shop</h2>
         <p class="lead mb-0">Please call (347) 339-1695 for availability</p>
@@ -189,13 +195,13 @@
                 var smallUrl = smallBase + filename;
                 var fullUrl = fullBase + filename;
                 var title = System.IO.Path.GetFileNameWithoutExtension(filename);
-
+                // style="height:650px; object-fit:cover; cursor:pointer;"
                 <div class="carousel-item @(i == 0 ? "active" : "")">
                     <img src="@smallUrl"
                          data-full="@fullUrl"
                          data-index="@i"
                          class="d-block w-100"
-                         style="height:650px; object-fit:cover; cursor:pointer;"
+                         style="height:650px; object-fit:contain; background: #f5f7f6; cursor:pointer;"
                          alt="@title"
                          title="Click to view"
                          role="button"
